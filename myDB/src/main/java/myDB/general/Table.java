@@ -1,6 +1,7 @@
 package myDB.general;
 
-import java.lang.reflect.Type;
+import myDB.general.column.ColumnType;
+
 import java.util.List;
 import java.util.Map;
 
