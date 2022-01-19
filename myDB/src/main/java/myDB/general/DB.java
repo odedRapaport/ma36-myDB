@@ -1,5 +1,7 @@
 package myDB.general;
 
+import myDB.filesManage.writer.JsonWriterTblDetails;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -13,6 +15,8 @@ public class DB {
     public void createTbl(Table tbl){
         new File(path + tbl.getName()).mkdirs();
         File table = new File(path + tbl.getName());
+        JsonWriterTblDetails writerTblDetails = new JsonWriterTblDetails(tbl);
+        writerTblDetails.write(table.getPath()+"//");
     }
 
     public File getTbl(String name) throws FileNotFoundException {
