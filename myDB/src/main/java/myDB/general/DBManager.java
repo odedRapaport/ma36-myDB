@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class DBManager {
-    public void createTbl(String path, String name){
+    public void createDB(String path, String name){
         new File(path + name).mkdirs();
     }
 
-    public File getTbl(String path, String name) throws FileNotFoundException {
+    public File getDB(String path, String name) throws FileNotFoundException {
         File file = new File(path);
         for (File f:
                 file.listFiles()) {

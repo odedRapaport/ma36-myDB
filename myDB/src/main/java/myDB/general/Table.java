@@ -1,14 +1,14 @@
 package myDB.general;
 
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
+import myDB.general.column.ColumnType;
+
+import java.util.*;
 
 public class Table {
     private String name;
-    private List<Map<String, Type>> columns;
+    private List<LinkedHashMap<String, ColumnType>> columns;
 
-    public Table(String name, List<Map<String, Type>> columns) {
+    public Table(String name, ArrayList<LinkedHashMap<String, ColumnType>> columns) {
         this.name = name;
         this.columns = columns;
     }
@@ -17,7 +17,7 @@ public class Table {
         return name;
     }
 
-    public List<Map<String, Type>> getColumns() {
+    public List<LinkedHashMap<String, ColumnType>> getColumns() {
         return columns;
     }
 }
