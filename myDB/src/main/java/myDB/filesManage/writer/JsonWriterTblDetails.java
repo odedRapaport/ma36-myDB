@@ -17,7 +17,7 @@ public class JsonWriterTblDetails implements Writer{
     public void write(String path) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new FileWriter(path + "details.json", true), table.getColumns());
+            objectMapper.writeValue(new FileWriter(path + "details.json", true), table);
         } catch (IOException e) {
             e.printStackTrace();
         }

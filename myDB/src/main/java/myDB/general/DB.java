@@ -1,5 +1,8 @@
 package myDB.general;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import myDB.filesManage.Parser.JsonParserTblDetails;
+import myDB.filesManage.reader.JsonReaderTblDetails;
 import myDB.filesManage.writer.JsonWriterTblDetails;
 
 import java.io.File;
@@ -19,12 +22,18 @@ public class DB {
         writerTblDetails.write(table.getPath()+"//");
     }
 
-    public File getTbl(String name) throws FileNotFoundException {
+    public Table getTbl(String name) throws FileNotFoundException {
         File file = new File(path);
         for (File f:
              file.listFiles()) {
             if (f.getName().equals(name)){
-                return f;
+                JsonReaderTblDetails reader = new JsonReaderTblDetails();
+                reader.Read(path + "\\" + name + "\\details.json");
+                JsonNode node = reader.getNode();
+                JsonParserTblDetails parser = new JsonParserTblDetails(node);
+                parser.parse();
+                Table table = parser.getTable();
+                return table;
             }
         }
         throw new FileNotFoundException();

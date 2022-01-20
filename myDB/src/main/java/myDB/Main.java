@@ -1,5 +1,8 @@
 package myDB;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import myDB.filesManage.Parser.JsonParserTblDetails;
+import myDB.filesManage.reader.JsonReaderTblDetails;
 import myDB.general.DB;
 import myDB.general.DBManager;
 import myDB.general.Table;
@@ -15,7 +18,26 @@ import java.util.LinkedHashMap;
 public class Main {
     public static void main(String[] args) {
         DBManager manager = new DBManager();
-        manager.createDB("C:\\Users\\עודד\\Desktop\\", "myDataBase");
+        String path = "";
+        try {
+            path = manager.getDB("C:\\Users\\עודד\\Desktop\\", "myDataBase").getPath();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        DB myDB = new DB(path);
+        Table table = null;
+        try {
+            table = myDB.getTbl("oded");
+            System.out.println();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+        /*manager.createDB("C:\\Users\\עודד\\Desktop\\", "myDataBase");
         DB db = null;
         try {
             db = new DB(manager.getDB("C:\\Users\\עודד\\Desktop\\", "myDataBase").getPath()+"\\");
@@ -29,6 +51,6 @@ public class Main {
         part1.put("last_name", new DBString());
         part1.put("birth_date", new DBDate());
         columns.add(part1);
-        db.createTbl(new Table("oded", columns));
+        db.createTbl(new Table("oded", 4,columns));*/
     }
 }
