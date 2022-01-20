@@ -10,7 +10,7 @@ public class JsonReaderTblDetails implements Reader {
     private JsonNode node;
 
     @Override
-    public void Read(String path) {
+    public void read(String path) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             this.node = mapper.readTree(new FileReader(path));

@@ -33,7 +33,7 @@ public class DB {
              file.listFiles()) {
             if (f.getName().equals(name)){
                 JsonReaderTblDetails reader = new JsonReaderTblDetails();
-                reader.Read(path + "\\" + name + "\\details.json");
+                reader.read(path + "\\" + name + "\\details.json");
                 JsonNode node = reader.getNode();
                 JsonParserTblDetails parser = new JsonParserTblDetails(node);
                 parser.parse();

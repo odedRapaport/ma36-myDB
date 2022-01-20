@@ -34,18 +34,13 @@ public class Main {
         TableActions tableActions = new TableActions(myDB, table);
         ArrayList<LinkedHashMap<String, Object>> values = new ArrayList<>();
         LinkedHashMap<String, Object> part1 = new LinkedHashMap<>();
-        part1.put("id", 5);
-        part1.put("first_name", "nalla");
-        part1.put("last_name", "rapaport");
+        part1.put("first_name", "shoded");
         Date date = new Date();
         date.setTime(60005);
         part1.put("birth_date", date);
         values.add(part1);
-        try {
-            tableActions.insert(values);
-        } catch (UnmatchColsException e) {
-            e.printStackTrace();
-        }
+        tableActions.update(2, part1);
+
 
 
 
