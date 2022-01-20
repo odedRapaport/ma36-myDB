@@ -23,7 +23,14 @@ public class CSVWriterBlock implements Writer{
             csvWriter.writeAll(block);
             csvWriter.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                FileWriter fileWriter = new FileWriter(path + name+"\\");
+                CSVWriter csvWriter = new CSVWriter(fileWriter);
+                csvWriter.writeAll(block);
+                csvWriter.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }

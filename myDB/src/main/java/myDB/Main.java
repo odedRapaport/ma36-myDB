@@ -24,8 +24,8 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        DB myDB = new DB(path);
-        Table table = null;
+        DB myDB = new DB(path+"\\");
+        /*Table table = null;
         try {
             table = myDB.getTbl("oded");
         } catch (FileNotFoundException e) {
@@ -34,9 +34,8 @@ public class Main {
         TableActions tableActions = new TableActions(myDB, table);
         ArrayList<LinkedHashMap<String, Object>> values = new ArrayList<>();
         LinkedHashMap<String, Object> part1 = new LinkedHashMap<>();
-        part1.put("first_name", "shoded");
         Date date = new Date();
-        date.setTime(60005);
+        date.setTime(900000000);
         part1.put("birth_date", date);
         values.add(part1);
         tableActions.update(2, part1);
@@ -45,13 +44,13 @@ public class Main {
 
 
 
-        /*manager.createDB("C:\\Users\\עודד\\Desktop\\", "myDataBase");
+        manager.createDB("C:\\Users\\עודד\\Desktop\\", "myDataBase");
         DB db = null;
         try {
             db = new DB(manager.getDB("C:\\Users\\עודד\\Desktop\\", "myDataBase").getPath()+"\\");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
         ArrayList<LinkedHashMap<String, ColumnType>> columns = new ArrayList<>();
         LinkedHashMap<String, ColumnType> part1 = new LinkedHashMap<>();
         part1.put("id", new DBInteger());
@@ -59,6 +58,11 @@ public class Main {
         part1.put("last_name", new DBString());
         part1.put("birth_date", new DBDate());
         columns.add(part1);
-        db.createTbl(new Table("oded", 4,columns));*/
+        LinkedHashMap<String, ColumnType> part2 = new LinkedHashMap<>();
+        part2.put("city", new DBString());
+        part2.put("street", new DBString());
+        part2.put("house_number", new DBInteger());
+        columns.add(part2);
+        myDB.createTbl(new Table("double", 4,columns));
     }
 }
