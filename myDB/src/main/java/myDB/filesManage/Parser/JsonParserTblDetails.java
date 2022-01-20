@@ -31,7 +31,7 @@ public class JsonParserTblDetails implements Parser{
                 columns.add(cols);
             }
         }
-        this.table = new Table(this.node.get("name").textValue(), Integer.parseInt(this.node.get("blockSize").toString()), columns);
+        this.table = new Table(this.node.get("name").textValue(), this.node.get("blockSize").intValue(), columns);
     }
 
     public Table getTable() {
@@ -53,7 +53,7 @@ public class JsonParserTblDetails implements Parser{
                     type = new DBString();
                 } else if (jn.get("type").textValue().equals("Integer.class")) {
                     type = new DBInteger();
-                } else if (jn.get("type").textValue().equals("LocalDate.class")) {
+                } else if (jn.get("type").textValue().equals("Date.class")) {
                     type = new DBDate();
                 }
                 part.put(keys.get(counter), type);

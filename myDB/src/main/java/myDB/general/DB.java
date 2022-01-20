@@ -15,11 +15,16 @@ public class DB {
         this.path = path;
     }
 
+    public String getPath() {
+        return path;
+    }
+
     public void createTbl(Table tbl){
         new File(path + tbl.getName()).mkdirs();
         File table = new File(path + tbl.getName());
         JsonWriterTblDetails writerTblDetails = new JsonWriterTblDetails(tbl);
         writerTblDetails.write(table.getPath()+"//");
+        new File(table.getPath()+"//data").mkdirs();
     }
 
     public Table getTbl(String name) throws FileNotFoundException {

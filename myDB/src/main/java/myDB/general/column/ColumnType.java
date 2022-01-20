@@ -10,4 +10,6 @@ public abstract class ColumnType {
     public String getType() {
         return type;
     }
+
+    public abstract String getDescription();
 }

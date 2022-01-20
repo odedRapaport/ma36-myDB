@@ -3,16 +3,16 @@ package myDB;
 import com.fasterxml.jackson.databind.JsonNode;
 import myDB.filesManage.Parser.JsonParserTblDetails;
 import myDB.filesManage.reader.JsonReaderTblDetails;
-import myDB.general.DB;
-import myDB.general.DBManager;
-import myDB.general.Table;
+import myDB.general.*;
 import myDB.general.column.ColumnType;
 import myDB.general.column.DBDate;
 import myDB.general.column.DBInteger;
 import myDB.general.column.DBString;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 
 public class Main {
@@ -28,11 +28,24 @@ public class Main {
         Table table = null;
         try {
             table = myDB.getTbl("oded");
-            System.out.println();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+        TableActions tableActions = new TableActions(myDB, table);
+        ArrayList<LinkedHashMap<String, Object>> values = new ArrayList<>();
+        LinkedHashMap<String, Object> part1 = new LinkedHashMap<>();
+        part1.put("id", 5);
+        part1.put("first_name", "nalla");
+        part1.put("last_name", "rapaport");
+        Date date = new Date();
+        date.setTime(60005);
+        part1.put("birth_date", date);
+        values.add(part1);
+        try {
+            tableActions.insert(values);
+        } catch (UnmatchColsException e) {
+            e.printStackTrace();
+        }
 
 
 
